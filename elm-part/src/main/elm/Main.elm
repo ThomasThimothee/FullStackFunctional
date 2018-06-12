@@ -4,7 +4,6 @@ import Html.Events exposing (..)
 import Http
 import Json.Decode as Decode
 import Json.Encode as Encode
--- import Json.Encode as Encode
 
 main : Program Never Model Msg
 main =
@@ -40,7 +39,7 @@ start =
 
 -- UPDATE
 
-type Msg
+type Msg --union type
   = GetMemberCount
   | MemberCountReceived (Result Http.Error Int)
   | GetMember
@@ -51,7 +50,7 @@ type Msg
   | PostMember
   | MemberPosted (Result Http.Error String)
 
-update : Msg -> Model -> (Model, Cmd Msg)
+update : Msg -> Model -> (Model, Cmd Msg) -- case matching
 update msg model =
   case msg of
     GetMemberCount ->
